@@ -70,7 +70,8 @@ http {
 
 ![alt text](https://github.com/umergit24/nginx/blob/master/Pasted%20image%2020240615191552.png)
 ![alt text](https://github.com/umergit24/nginx/blob/master/Pasted%20image%2020240615191756.png)
-
+![[Pasted image 20240615191552.png]]
+![[Pasted image 20240615191756.png]]
 
 - can have multiple servers running on multiple ports.
 
