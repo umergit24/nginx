@@ -38,6 +38,7 @@ or go to localhost:80 in the browser to view default nginx homepage. 80 is the d
 ```
 sudo mv nginx.conf nginx-backup.conf
 sudo nano nginx.conf
+sudo nginx -t 
 nginx -s reload
 nginx
 ```
@@ -74,6 +75,147 @@ http {
 ![[Pasted image 20240615191756.png]]
 
 - can have multiple servers running on multiple ports.
+
+
+
+# serving static files
+- serve or cache static files like image java css files
+- root {location of data} tells it where to search for files
+- steps
+	- make a folder inside /etc/nginx
+	
+			sudo mkdir website
+			cd website
+			sudo nano index.html
+```html (index.html)
+<html>
+	<head>
+	    <title>Umer, Nginx</title>
+	</head>
+	<body>
+	    <h1> hello from nginx </h1>
+	    <p> Umer here </p>
+	</body>
+</html>
+
+```
+		cd ..
+		nano nginx.conf
+```config-file
+events {
+
+}
+
+# nginx has to listen on a particlar port 
+# so create a http server
+# it can furhter have many servers inside
+
+http {
+	server {
+		listen 80;
+		server_name _;   
+		# server name means what request type is to be handled  
+		# _ specifies it to handle everything
+		
+		root /etc/nginx/website;
+		
+	}
+}
+```
+
+
+![[Pasted image 20240615210415.png]]
+
+
+- nginx is smart enough to differentiate html file from non-html files but not smart enough to differentiate among non-html files.
+- therefore:
+```config-file
+events {
+
+}
+
+# nginx has to listen on a particlar port 
+# so create a http server
+# it can furhter have many servers inside
+
+http {
+
+	types {
+		text/css css;
+		text/html html;
+	}
+	
+	server {
+		listen 80;
+		server_name _;   
+		# server name means what request type is to be handled  
+		# _ specifies it to handle everything
+		
+		root /etc/nginx/website;
+		
+	}
+}
+```
+
+
+- all they types can be found in '/etc/nginx/mime.types' so its better to use that
+```
+events {
+
+}
+
+# nginx has to listen on a particlar port 
+# so create a http server
+# it can furhter have many servers inside
+
+http {
+
+	include /etc/nginx/mime.types;
+	
+	server {
+		listen 80;
+		server_name _;   
+		# server name means what request type is to be handled  
+		# _ specifies it to handle everything
+		
+		root /etc/nginx/website;
+		
+	}
+}
+```
+
+- can further append to the root command using location
+```
+events {
+
+}
+
+# nginx has to listen on a particlar port 
+# so create a http server
+# it can furhter have many servers inside
+
+http {
+
+	include /etc/nginx/mime.types;
+	
+	server {
+		listen 80;
+		server_name _;   
+		# server name means what request type is to be handled  
+		# _ specifies it to handle everything
+		
+		root /etc/nginx/website;
+		location / {
+		}
+		location /images/ {
+		}		
+		
+		location ~ \.(mp3|mp4) {
+        root /etc/nginx/mp;
+	    }
+	}
+}
+```
 
 
 
