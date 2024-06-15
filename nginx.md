@@ -219,3 +219,5 @@ http {
 
 
 
+really nice guide here
+https://www.youtube.com/playlist?list=PLinedj3B30sCbKdDspcuD3T6zFWPXzsNt
