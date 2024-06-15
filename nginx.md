@@ -67,6 +67,9 @@ http {
 
 ```
 
+
+![alt text](https://github.com/umergit24/nginx/blob/master/Pasted%20image%2020240615191552.png)
+
 [![[Pasted image 20240615191552.png]]]
 (https://github.com/umergit24/nginx/blob/master/Pasted%20image%2020240615191552.png)
 
