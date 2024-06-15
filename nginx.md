@@ -125,7 +125,7 @@ http {
 
 
 ![[Pasted image 20240615210415.png]]
-
+![alt text](https://github.com/umergit24/nginx/blob/master/Pasted%20image%2020240615210415.png)
 
 - nginx is smart enough to differentiate html file from non-html files but not smart enough to differentiate among non-html files.
 - therefore:
